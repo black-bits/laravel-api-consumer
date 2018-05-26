@@ -2,15 +2,13 @@
 
 namespace DummyNamespace;
 
-use BlackBits\ApiConsumers\Endpoints\Endpoint;
-
+use BlackBits\ApiConsumer\Support\Endpoint;
 
 class DummyClass extends Endpoint
 {
-    /*
-    public function all() {
-        return $this->get('...');
-    }
-    */
+    protected $path = '';
 
+    public function all() {
+        return $this->get();
+    }
 }

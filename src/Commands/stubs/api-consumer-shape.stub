@@ -2,8 +2,7 @@
 
 namespace DummyNamespace;
 
-use BlackBits\ApiConsumers\Shapes\BaseShape;
-
+use BlackBits\ApiConsumer\Support\BaseShape;
 
 class DummyClass extends BaseShape
 {
@@ -15,5 +14,4 @@ class DummyClass extends BaseShape
     ];
 
     protected $fields = [];
-
 }

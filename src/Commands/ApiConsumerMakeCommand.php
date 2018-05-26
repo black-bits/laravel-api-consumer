@@ -1,6 +1,6 @@
 <?php
 
-namespace BlackBits\ApiConsumers\Commands;
+namespace BlackBits\ApiConsumer\Commands;
 
 use Illuminate\Console\GeneratorCommand;
 use Symfony\Component\Console\Input\InputOption;

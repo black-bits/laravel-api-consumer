@@ -16,7 +16,7 @@ class ApiConsumerServiceProvider extends ServiceProvider
     {
         if ($this->app->runningInConsole()) {
             $this->publishes([
-                __DIR__.'/../config/api-consumer.php' => config_path('api-consumer.php'),
+                __DIR__.'/../config/api-consumers.php' => config_path('api-consumers.php'),
             ], 'config');
 
             $this->commands([
@@ -32,6 +32,6 @@ class ApiConsumerServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->mergeConfigFrom(__DIR__.'/../config/api-consumers.php', 'api-consumer');
+        $this->mergeConfigFrom(__DIR__.'/../config/api-consumers.php', 'api-consumers');
     }
 }

@@ -2,8 +2,7 @@
 
 namespace DummyNamespace;
 
-use BlackBits\ApiConsumers\ApiConsumer;
-
+use BlackBits\ApiConsumer\ApiConsumer;
 
 class DummyClass extends ApiConsumer
 {
