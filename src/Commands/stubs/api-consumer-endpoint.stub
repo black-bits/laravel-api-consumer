@@ -1,0 +1,16 @@
+<?php
+
+namespace DummyNamespace;
+
+use BlackBits\ApiConsumers\Endpoints\Endpoint;
+
+
+class DummyClass extends Endpoint
+{
+    /*
+    public function all() {
+        return $this->get('...');
+    }
+    */
+
+}

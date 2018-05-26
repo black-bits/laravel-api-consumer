@@ -1,0 +1,19 @@
+<?php
+
+namespace DummyNamespace;
+
+use BlackBits\ApiConsumers\Shapes\BaseShape;
+
+
+class DummyClass extends BaseShape
+{
+    protected $return_shape_data_only = false;
+    protected $require_shape_structure = false;
+
+    protected $transformations = [
+        //"isEnabled" => "is_enabled",
+    ];
+
+    protected $fields = [];
+
+}
