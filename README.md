@@ -3,7 +3,7 @@
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/black-bits/laravel-api-consumer.svg?style=flat-square)](https://packagist.org/packages/black-bits/laravel-api-consumer)
 [![Total Downloads](https://img.shields.io/packagist/dt/black-bits/laravel-api-consumer.svg?style=flat-square)](https://packagist.org/packages/black-bits/laravel-api-consumer)
 
-This Laravel package lets you generate API Consumers with Endpoints and Shapes which's usage is similar to Laravel's Eloquent models.
+This Laravel package lets you generate API Consumers with Endpoints and Shapes which usage is similar to Laravel's Eloquent models.
 
 You can generate one Consumer per API service you want to consume. Each Consumer can have any number of Endpoints with multiple Shapes.
 
@@ -26,9 +26,9 @@ To make a new Api Consumer Service you can simply run
 php artisan make:api-consumer ConsumerName
 ```
 
-To add an endpoint to this service run the following command, this will also create a default shape for that Endpoint
+To add an endpoint (e.g. UserEndpoint) to this service run the following command, this will also create a default shape (UserShape) for that Endpoint
 ``` bash
-php artisan make:api-consumer-endpoint EndpointName -c ConsumerName
+php artisan make:api-consumer-endpoint UserEndpoint -c ConsumerName
 ```
 
 You can find an example implementation here: [black-bits/laravel-api-consumer-showcase](https://github.com/black-bits/laravel-api-consumer-showcase)
