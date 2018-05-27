@@ -5,6 +5,8 @@ namespace BlackBits\ApiConsumer\Support;
 use BlackBits\ApiConsumer\Contracts\CollectionCallbackContract;
 use BlackBits\ApiConsumer\Support\ShapeResolver;
 use Zttp\Zttp;
+use Illuminate\Support\Facades\Cache;
+
 
 abstract class Endpoint
 {
@@ -15,6 +17,10 @@ abstract class Endpoint
     protected $options = [];
     protected $path;
     protected $method;
+
+    protected $shouldCache = false;
+    protected $cacheDurationInMinutes = 5;
+
 
     /**
      * Endpoint constructor.
@@ -36,14 +42,43 @@ abstract class Endpoint
     }
 
     /**
+     * @return string
+     */
+    private function getCacheKey()
+    {
+        $key = $this->method . "-" . $this->uri();
+
+        if(!empty($this->options)) {
+            $value = $this->options;
+            if (is_array($value)) {
+                $value = http_build_query($value, null, '&', PHP_QUERY_RFC3986);
+            }
+            if (is_string($value)) {
+                $key .= "-" . $value;
+            }
+        }
+
+        return $key;
+    }
+
+    /**
      * @return mixed
      */
     private function request()
     {
-        switch ($this->method) {
-            case "GET":
-                return Zttp::get($this->uri(), $this->options)->body();
+
+        if (strtolower($this->method) == "get") {
+
+            if ($this->shouldCache) {
+                return Cache::remember($this->getCacheKey(), $this->cacheDurationInMinutes, function () {
+                    return Zttp::get($this->uri(), $this->options)->body();
+                });
+            }
+            return Zttp::get($this->uri(), $this->options)->body();
         }
+
+        // TODO: other Methods
+        return "[]";
     }
 
     /**
@@ -53,6 +88,7 @@ abstract class Endpoint
     {
         $this->collectionCallbacks[] = $collectionCallback;
     }
+
 
     /**
      * @return \Illuminate\Support\Collection|\Tightenco\Collect\Support\Collection
