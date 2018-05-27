@@ -1,22 +1,38 @@
 {
-    "name": "spatie/:package_name",
-    "description": ":package_description",
+    "name": "black-bits/laravel-api-consumer",
+    "description": "Awesome Laravel Api Consumer",
     "keywords": [
-        "spatie",
-        ":package_name"
+        "blackbits",
+        "laravel api consumer",
+        "laravel",
+        "api consumer"
     ],
-    "homepage": "https://github.com/spatie/:package_name",
+    "homepage": "https://github.com/black-bits/larave-api-consumer",
     "license": "MIT",
     "authors": [
         {
-            "name": ":author_name",
-            "email": ":author_email",
-            "homepage": "https://spatie.be",
+            "name": "Oliver Heck",
+            "email": "oliver.heck@blackbits.io",
+            "homepage": "https://blackbits.io",
+            "role": "Developer"
+        },
+        {
+            "name": "Andreas Przywara",
+            "email": "andreas.przywara@blackbits.io",
+            "homepage": "https://blackbits.io",
+            "role": "Developer"
+        },
+        {
+            "name": "Adrian Raeuchle",
+            "email": "adrian.raeuchle@blackbits.io",
+            "homepage": "https://blackbits.io",
             "role": "Developer"
         }
     ],
     "require": {
-        "php": "^7.1"
+        "php": "^7.1",
+        "kitetail/zttp": "^0.3.0",
+        "illuminate/support": "5.1.*|5.2.*|5.3.*|5.4.*|5.5.*|5.6.*"
     },
     "require-dev": {
         "larapack/dd": "^1.0",
@@ -24,12 +40,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Spatie\\Skeleton\\": "src"
+            "BlackBits\\ApiConsumer\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Spatie\\Skeleton\\Tests\\": "tests"
+            "BlackBits\\ApiConsumer\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -43,11 +59,8 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Spatie\\Skeleton\\SkeletonServiceProvider"
-            ],
-            "aliases": {
-                "Skeleton": "Spatie\\Skeleton\\SkeletonFacade"
-            }
+                "BlackBits\\ApiConsumer\\ApiConsumerServiceProvider"
+            ]
         }
     }
 }
