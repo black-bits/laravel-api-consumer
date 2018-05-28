@@ -126,10 +126,10 @@ abstract class Endpoint
      */
     public function __call($name, $arguments)
     {
-        $collectionCallback =  "\BlackBits\ApiConsumer\CollectionCallbacks\\" . ucfirst($name) . "CollectionCallback";
+        $collectionCallback =  "\App\CollectionCallbacks\\" . ucfirst($name) . "CollectionCallback";
 
         if (!class_exists($collectionCallback)) {
-            $collectionCallback =  "\App\CollectionCallbacks\\" . ucfirst($name) . "CollectionCallback";
+            $collectionCallback =  "\BlackBits\ApiConsumer\CollectionCallbacks\\" . ucfirst($name) . "CollectionCallback";
         }
 
         if (!class_exists($collectionCallback)) {
