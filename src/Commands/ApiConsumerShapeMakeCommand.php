@@ -88,4 +88,14 @@ class ApiConsumerShapeMakeCommand extends GeneratorCommand
         ];
     }
 
+    /**
+     * Get the desired class name from the input.
+     *
+     * @return string
+     */
+    protected function getNameInput()
+    {
+        return preg_replace('/Shape$/', '', trim($this->argument('name'))) . "Shape";
+    }
+
 }

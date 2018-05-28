@@ -19,6 +19,12 @@ You can install the package via composer:
 composer require black-bits/laravel-api-consumer
 ```
 
+Next publish the config:
+
+```bash
+php artisan vendor:publish --provider="BlackBits\ApiConsumer\ApiConsumerServiceProvider"
+```
+
 ## Usage
 
 To make a new Api Consumer Service you can simply run

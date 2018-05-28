@@ -2,6 +2,7 @@
 
 namespace BlackBits\ApiConsumer\Support;
 
+use BlackBits\ApiConsumer\CollectionCallbacks\_ReflectionCollectionCallback;
 use BlackBits\ApiConsumer\Contracts\CollectionCallbackContract;
 use BlackBits\ApiConsumer\Support\ShapeResolver;
 use Zttp\Zttp;
@@ -128,11 +129,17 @@ abstract class Endpoint
         $collectionCallback =  "\BlackBits\ApiConsumer\CollectionCallbacks\\" . ucfirst($name) . "CollectionCallback";
 
         if (!class_exists($collectionCallback)) {
-            throw new \Exception("Class $collectionCallback does not exist.");
+            $collectionCallback =  "\App\CollectionCallbacks\\" . ucfirst($name) . "CollectionCallback";
+        }
+
+        if (!class_exists($collectionCallback)) {
+            $this->registerCollectionCallback(
+                (new _ReflectionCollectionCallback(... $arguments))->setMethod($name)
+            );
+            return $this;
         }
 
         $this->registerCollectionCallback(new $collectionCallback(... $arguments));
-
         return $this;
     }
 
