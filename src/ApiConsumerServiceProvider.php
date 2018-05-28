@@ -3,6 +3,7 @@
 namespace BlackBits\ApiConsumer;
 
 use BlackBits\ApiConsumer\Commands\ApiConsumerEndpointMakeCommand;
+use BlackBits\ApiConsumer\Commands\ApiConsumerMakeCollectionCallback;
 use BlackBits\ApiConsumer\Commands\ApiConsumerMakeCommand;
 use BlackBits\ApiConsumer\Commands\ApiConsumerShapeMakeCommand;
 use Illuminate\Support\ServiceProvider;
@@ -22,7 +23,8 @@ class ApiConsumerServiceProvider extends ServiceProvider
             $this->commands([
                 ApiConsumerMakeCommand::class,
                 ApiConsumerEndpointMakeCommand::class,
-                ApiConsumerShapeMakeCommand::class
+                ApiConsumerShapeMakeCommand::class,
+                ApiConsumerMakeCollectionCallback::class
             ]);
         }
     }

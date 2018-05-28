@@ -6,5 +6,5 @@ use Illuminate\Support\Collection;
 
 interface CollectionCallbackContract
 {
-    function applyTo(Collection $collection) : Collection;
+    function applyTo(Collection &$collection) : Collection;
 }
