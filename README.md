@@ -11,9 +11,12 @@ An Endpoint represents e.g. a resource on a REST API like /users. Endpoints retu
 
 A Shape represents an Object returned by an Endpoint and allows you to e.g. transform or validate the Object's properties.
 
+### Disclaimer
+_This package is currently in development and is not production ready._
+
 ## Installation
 
-You can install the package via composer:
+You can install the package via composer
 
 ```bash
 composer require black-bits/laravel-api-consumer
@@ -35,6 +38,12 @@ php artisan make:api-consumer ConsumerName
 To add an endpoint (e.g. UserEndpoint) to this service run the following command, this will also create a default shape (UserShape) for that Endpoint
 ``` bash
 php artisan make:api-consumer-endpoint UserEndpoint -c ConsumerName
+```
+
+To add a custom Collection Callback run the following command.
+You can use this e.g. to create a filter that only shows Users that receive a newsletter
+``` bash
+php artisan make:api-consumer-collection-callback ReceivesNewsletter
 ```
 
 You can find an example implementation here: [black-bits/laravel-api-consumer-showcase](https://github.com/black-bits/laravel-api-consumer-showcase)
