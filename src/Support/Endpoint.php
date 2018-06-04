@@ -15,6 +15,7 @@ abstract class Endpoint
     private $shapeResolver;
     private $collectionCallbacks = [];
 
+    protected $headers = [];
     protected $options = [];
     protected $path;
     protected $method;
@@ -72,10 +73,10 @@ abstract class Endpoint
 
             if ($this->shouldCache) {
                 return Cache::remember($this->getCacheKey(), $this->cacheDurationInMinutes, function () {
-                    return Zttp::get($this->uri(), $this->options)->body();
+                    return Zttp::withHeaders($this->headers)->get($this->uri(), $this->options)->body();
                 });
             }
-            return Zttp::get($this->uri(), $this->options)->body();
+            return Zttp::withHeaders($this->headers)->get($this->uri(), $this->options)->body();
         }
 
         // TODO: other Methods
@@ -89,7 +90,6 @@ abstract class Endpoint
     {
         $this->collectionCallbacks[] = $collectionCallback;
     }
-
 
     /**
      * @return \Illuminate\Support\Collection|\Tightenco\Collect\Support\Collection
