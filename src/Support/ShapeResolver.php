@@ -6,7 +6,7 @@ use BlackBits\ApiConsumer\Contracts\ShapeContract;
 
 class ShapeResolver
 {
-    private $shape;
+    protected $shape;
 
     public function __construct(ShapeContract $shape)
     {
@@ -35,7 +35,7 @@ class ShapeResolver
         return $collection;
     }
 
-    private function isJSON($json_string)
+    protected function isJSON($json_string)
     {
         return is_string($json_string) && is_array(json_decode($json_string, true)) && (json_last_error() == JSON_ERROR_NONE) ? true : false;
     }
