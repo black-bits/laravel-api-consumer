@@ -8,7 +8,7 @@ abstract class ApiConsumer
 {
     abstract protected function getEndpoint();
 
-    protected static $shapeResolverClass = \BlackBits\ApiConsumer\Support\ShapeResolver::class;
+    protected static $shapeResolverClass = ShapeResolver::class;
 
     public static function __callStatic($name, $arguments)
     {
@@ -28,6 +28,12 @@ abstract class ApiConsumer
             throw new \Exception("Class $shape does not exist.");
         }
 
-        return new $endpoint((new static)->getEndpoint(), new static::$shapeResolverClass(new $shape));
+        $consumer = new static;
+        return (new $endpoint($consumer->getEndpoint(), new static::$shapeResolverClass(new $shape)))->addHeaders($consumer->getHeaders());
+    }
+
+    protected function getHeaders()
+    {
+        return [];
     }
 }
